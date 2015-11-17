@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<!-- THRESHOLDS: TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="INFO" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %c %x - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="GSR-SERVER-STATE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/gsr-log/GSR-server-state.log" />
+		<param name="Threshold" value="DEBUG" />
+		<param name="MaxFileSize" value="3MB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %c %x - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="GSR-ERROR-STATE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/bookstore/bookstore-error-state.log" />
+		<param name="Threshold" value="ERROR" />
+		<param name="MaxFileSize" value="3MB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %c %x - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+	<!-- Hibernate configuration to show sql statements -->	
+    <category name="org.hibernate.SQL">
+        <priority value="DEBUG"/>
+    </category>
+   
+	
+	<root>
+		<appender-ref ref="BOOKSTORE-SERVER-STATE" />
+		<appender-ref ref="BOOKSTORE-ERROR-STATE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>
