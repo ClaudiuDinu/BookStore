@@ -1,6 +1,6 @@
 package com.bookstore.app.data.entites;
 
-import com.bookstore.app.commons.bo.UserBO;
+import com.bookstore.app.commons.bo.UserTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,7 +48,7 @@ public class User  implements Serializable{
         this.password = password;
     }
 
-    public UserBO asBO(){
-        return new UserBO(getId(),getUserName(),getPassword());
+    public UserTO asTO(){
+        return new UserTO(getId(),getUserName(),getPassword());
     }
 }
