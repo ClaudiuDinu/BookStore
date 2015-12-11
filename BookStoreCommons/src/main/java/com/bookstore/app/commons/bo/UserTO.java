@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by cdinu on 11/13/2015.
  */
-public class UserBO implements Serializable {
+public class UserTO implements Serializable {
 
     private Long id;
 
@@ -14,11 +14,11 @@ public class UserBO implements Serializable {
     private String password;
 
 
-    public UserBO() {
+    public UserTO() {
         this(null, null, null);
     }
 
-    public UserBO(Long id, String userName, String password) {
+    public UserTO(Long id, String userName, String password) {
         this.id = id;
         this.userName = userName;
         this.password = password;
