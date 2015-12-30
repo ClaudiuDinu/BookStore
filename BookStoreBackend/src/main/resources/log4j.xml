@@ -12,8 +12,8 @@
 		</layout>
 	</appender>
 
-	<appender name="GSR-SERVER-STATE" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="../logs/gsr-log/GSR-server-state.log" />
+	<appender name="BOOKSTORE-SERVER-STATE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/bookstore-log/bookstore-server-state.log" />
 		<param name="Threshold" value="DEBUG" />
 		<param name="MaxFileSize" value="3MB" />
 		<param name="MaxBackupIndex" value="2" />
@@ -22,8 +22,8 @@
 		</layout>
 	</appender>
 
-	<appender name="GSR-ERROR-STATE" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="../logs/bookstore/bookstore-error-state.log" />
+	<appender name="BOOKSTORE-ERROR-STATE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/bookstore-log/bookstore-error-state.log" />
 		<param name="Threshold" value="ERROR" />
 		<param name="MaxFileSize" value="3MB" />
 		<param name="MaxBackupIndex" value="2" />

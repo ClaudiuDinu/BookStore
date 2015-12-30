@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BookingStore.iml" filepath="$PROJECT_DIR$/BookingStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookStoreBackend/BookStoreBackend.iml" filepath="$PROJECT_DIR$/BookStoreBackend/BookStoreBackend.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookStoreCommons/BookStoreCommons.iml" filepath="$PROJECT_DIR$/BookStoreCommons/BookStoreCommons.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookStoreFrontend/BookStoreFrontend.iml" filepath="$PROJECT_DIR$/BookStoreFrontend/BookStoreFrontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BookingStore.iml" filepath="$PROJECT_DIR$/BookingStore.iml" />
     </modules>
   </component>
 </project>

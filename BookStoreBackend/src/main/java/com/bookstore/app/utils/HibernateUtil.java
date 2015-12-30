@@ -1,8 +1,6 @@
 package com.bookstore.app.utils;
 
-import com.bookstore.app.data.entites.Book;
-import com.bookstore.app.data.entites.BookCategory;
-import com.bookstore.app.data.entites.User;
+import com.bookstore.app.data.entites.*;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -74,8 +72,11 @@ public final class HibernateUtil implements IUtil {
 		try {
 			config = new Configuration();
 			config.addAnnotatedClass(User.class);
+			config.addAnnotatedClass(UserProfile.class);
 			config.addAnnotatedClass(Book.class);
 			config.addAnnotatedClass(BookCategory.class);
+			config.addAnnotatedClass(City.class);
+			config.addAnnotatedClass(Country.class);
 			config.configure(IUtil.HIBERNATE_CONFIG_FILE_PATH);
 
 			sessionFactory = config.buildSessionFactory();

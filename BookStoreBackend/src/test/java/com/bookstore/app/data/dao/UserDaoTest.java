@@ -1,9 +1,13 @@
 package com.bookstore.app.data.dao;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
+import com.bookstore.app.commons.bo.UserProfileTO;
 import com.bookstore.app.commons.bo.UserTO;
 import com.bookstore.app.data.dao.impl.UserDaoImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +39,38 @@ public class UserDaoTest {
     @Test
     public void testLogin() {
 
-        UserTO userTO = new UserTO();
-        userTO.setUserName("user");
-        userTO.setPassword("user");
+        UserTO loggedUser = null;
+
+       String userName = "user";
+       String password = "user";
+
 
         try {
-             userDao.login(userTO);
+            loggedUser = userDao.login(userName, password);
         } catch (Exception e) {
 
         }
+
+        assertNotNull(loggedUser);
+    }
+
+    @Test
+    public void createUserTest() {
+        UserTO savedUser = null;
+        UserTO userTO = new UserTO(12L,"tst","tst",null);
+
+        CountryTO countryTO = new CountryTO(1L, "ROMANIA");
+        CityTO cityTO = new CityTO(1L, "Sibiu", countryTO);
+        UserProfileTO profileTO = new UserProfileTO(1L, "Home", cityTO, countryTO,"admin@tst.com","Tst","Lst", "071-2235",0);
+        userTO.setUserProfileTO(profileTO);
+
+        try {
+            savedUser = userDao.saveUser(userTO);
+        } catch (Exception e) {
+
+        }
+
+        assertNotNull(savedUser);
     }
 
 

@@ -1,6 +1,7 @@
 package com.bookstore.app.data.manager.impl;
 
 import com.bookstore.app.commons.bo.UserTO;
+import com.bookstore.app.commons.exceptions.SavingObjectException;
 import com.bookstore.app.commons.exceptions.UserAuthenticationException;
 import com.bookstore.app.data.dao.IUserDao;
 import com.bookstore.app.data.manager.IUserManager;
@@ -22,15 +23,23 @@ public class UserManagerImpl implements IUserManager {
     @Qualifier("userDao")
     private IUserDao userDao;
 
-    public UserTO login(UserTO userTO) throws UserAuthenticationException{
-       return userDao.login(userTO);
+    public UserTO login(String userName, String password) throws UserAuthenticationException{
+       return userDao.login(userName, password);
     }
 
     public UserTO getUserByName(String userName) {
         return userDao.getUserByName(userName);
     }
 
+    public UserTO getUserById(int userId) {
+        return userDao.getUserById(userId);
+    }
+
     public List<UserTO> getAllUsers() {
         return userDao.getAllUsers();
+    }
+
+    public UserTO saveUser(UserTO userTO) throws SavingObjectException{
+        return userDao.saveUser(userTO);
     }
 }

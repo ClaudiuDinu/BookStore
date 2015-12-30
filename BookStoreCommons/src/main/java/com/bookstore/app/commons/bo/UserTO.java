@@ -13,15 +13,18 @@ public class UserTO implements Serializable {
 
     private String password;
 
+    private UserProfileTO userProfileTO;
+
 
     public UserTO() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 
-    public UserTO(Long id, String userName, String password) {
+    public UserTO(Long id, String userName, String password, UserProfileTO userProfileTO) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.userProfileTO = userProfileTO;
     }
 
     public Long getId() {
@@ -46,5 +49,13 @@ public class UserTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserProfileTO getUserProfileTO() {
+        return userProfileTO;
+    }
+
+    public void setUserProfileTO(UserProfileTO userProfileTO) {
+        this.userProfileTO = userProfileTO;
     }
 }

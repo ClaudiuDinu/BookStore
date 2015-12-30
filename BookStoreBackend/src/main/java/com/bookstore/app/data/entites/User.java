@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class User  implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", updatable = false)
     private Long id;
 
@@ -23,6 +23,9 @@ public class User  implements Serializable{
     @Basic
     @Column(name = "PASSWORD")
     private String password;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    private UserProfile userProfile;
 
     public Long getId() {
         return id;
@@ -47,8 +50,17 @@ public class User  implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
 
     public UserTO asTO(){
-        return new UserTO(getId(),getUserName(),getPassword());
+        return new UserTO(getId(), getUserName(), getPassword(), getUserProfile()!= null ? getUserProfile().asTO(): null);
     }
+
+
 }

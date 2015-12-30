@@ -29,7 +29,7 @@ public class RestServiceController  implements RestURIConstants{
 
     @RequestMapping(value = REST_USER_DUMMY, method = RequestMethod.GET)
     public UserTO getDummyUser(){
-        return new UserTO(null,"DummyName", "pass");
+        return new UserTO(null,"DummyName", "pass", null);
     }
 
     @RequestMapping(value =REST_USER_ALL, method = RequestMethod.GET)
@@ -38,14 +38,23 @@ public class RestServiceController  implements RestURIConstants{
     }
 
     @RequestMapping(value = REST_USER_LOGIN, method = RequestMethod.GET)
-    public UserTO login(UserTO userTO){
+    public UserTO login(@RequestParam("userName") String userName, @RequestParam("password") String password ){
         UserTO loggedUserTO = null;
         try {
-            loggedUserTO =   userManager.login(userTO);
+            loggedUserTO =   userManager.login(userName,password);
         }catch (UserAuthenticationException e){
 
         }
        return loggedUserTO;
+    }
+
+    @RequestMapping(value = REST_USER_ADD, method = RequestMethod.POST)
+    public void saveUser(@RequestBody UserTO userTO){
+        try {
+            userManager.saveUser(userTO);
+        } catch (SavingObjectException e) {
+            e.printStackTrace();
+        }
     }
 
 

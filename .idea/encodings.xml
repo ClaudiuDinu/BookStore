@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="PROJECT" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/IndexPage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/BookTemplate.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/BookTemplate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/BookstoreTemplate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/FooterPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/HeaderPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/JugTemplate.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/JugTemplate.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/JugTemplate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/JugTemplate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/java/com/bookstore/app/pages/layout/MenuPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/webapp/com/bookstore/app/pages/layout/BookstoreTemplate.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/webapp/com/bookstore/app/pages/layout/FooterPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/webapp/com/bookstore/app/pages/layout/HeaderPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/webapp/com/bookstore/app/pages/layout/MenuPanel.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BookStoreFrontend/src/main/webapp/wicketLayout_files" charset="UTF-8" />
   </component>
 </project>

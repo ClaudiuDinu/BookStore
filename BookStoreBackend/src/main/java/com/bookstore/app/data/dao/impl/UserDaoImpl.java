@@ -1,10 +1,18 @@
 package com.bookstore.app.data.dao.impl;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
+import com.bookstore.app.commons.bo.UserProfileTO;
 import com.bookstore.app.commons.bo.UserTO;
+import com.bookstore.app.commons.exceptions.SavingObjectException;
 import com.bookstore.app.commons.exceptions.UserAuthenticationException;
 import com.bookstore.app.data.dao.IUserDao;
+import com.bookstore.app.data.entites.City;
+import com.bookstore.app.data.entites.Country;
 import com.bookstore.app.data.entites.User;
+import com.bookstore.app.data.entites.UserProfile;
 import com.bookstore.app.utils.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +31,11 @@ public class UserDaoImpl implements IUserDao {
 
     private SessionFactory sessionFactory;
 
+    /**
+     * The logging object.
+     */
+    private static Logger logger = Logger.getLogger(UserDaoImpl.class);
+
     public SessionFactory getSessionFactory() {
         if(sessionFactory == null){
             sessionFactory = HibernateUtil.getSessionFactory();
@@ -34,7 +47,7 @@ public class UserDaoImpl implements IUserDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public UserTO login(UserTO userTO) throws UserAuthenticationException{
+    public UserTO login(String userName, String password) throws UserAuthenticationException{
 
         Session session = getSessionFactory().openSession();
 
@@ -49,11 +62,12 @@ public class UserDaoImpl implements IUserDao {
 
             for (User dbU : dbUsers){
 
-                if(dbU.getUserName().equals(userTO.getUserName()) && dbU.getPassword().equals(userTO.getPassword())){
+                if(dbU.getUserName().equals(userName) && dbU.getPassword().equals(password)){
                     userFound = true;
                     foundUserTO = dbU.asTO();
+                    break;
                 }
-                break;
+
             }
 
         }catch (Exception e){
@@ -75,7 +89,7 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public UserTO getUserByName(String userName) {
-        return new UserTO( null,"Vasile", "pass");
+        return new UserTO( null,"Vasile", "pass", null);
     }
 
     public List<UserTO> getAllUsers() {
@@ -96,11 +110,72 @@ public class UserDaoImpl implements IUserDao {
 
         }catch (Exception e){
             //log the error
+            System.out.println(e);
         }finally {
             session.close();
         }
 
 
         return  allUsers;
+    }
+
+    public UserTO saveUser(UserTO userTO) throws SavingObjectException {
+        User user = new User();
+
+        if(userTO.getId() != null){
+             user.setId(userTO.getId());
+        }
+        user.setUserName(userTO.getUserName());
+        user.setPassword(userTO.getPassword());
+
+        UserProfileTO userProfileTO = userTO.getUserProfileTO();
+
+        if(userProfileTO != null) {
+
+            CountryTO countryTO = userProfileTO.getCountryTO();
+            Country country = new Country(countryTO.getId(), countryTO.getName());
+
+            CityTO cityTO = userProfileTO.getCityTO();
+            City city = new City(cityTO.getId(),country, cityTO.getName());
+
+            UserProfile userProfile = new UserProfile();
+            userProfile.setAddress(userProfileTO.getAddress());
+            userProfile.setCity(city);
+            userProfile.setCountry(country);
+            userProfile.setEmailAddress(userProfileTO.getEmailAddress());
+            userProfile.setFirstName(userProfileTO.getFirstName());
+            userProfile.setLastName(userProfileTO.getLastName());
+            userProfile.setId(userProfileTO.getId());
+            userProfile.setPhoneNumber(userProfileTO.getPhoneNumber());
+            userProfile.setPin(userProfileTO.getPin());
+            userProfile.setUser(user);
+
+            user.setUserProfile(userProfile);
+        }
+
+        Session session = getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(user);
+
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            logger.error(
+                    "An exception occurred while saving a user to database."
+                            + HibernateUtil.TRANSACTION_ROLLBACK, e);
+            throw new SavingObjectException(e.getMessage(), e);
+
+        } finally {
+            session.getTransaction().commit();
+            session.close();
+            logger.info(HibernateUtil.TRANSACTION_COMMITED_SUCCESSFULLY + " "
+                    + HibernateUtil.SESSION_STOP);
+        }
+
+        return user.asTO();
+    }
+
+    public UserTO getUserById(int userId) {
+        return null;
     }
 }

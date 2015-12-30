@@ -1,35 +1,57 @@
 package com.bookstore.app.data.entites;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
+import com.bookstore.app.commons.bo.UserProfileTO;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name="USER_PROFILE")
 public class UserProfile implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name = "ID", updatable = false)
+	private Long id;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
+	@Basic
+	@Column(name="FIRST_NAME")
 	private String firstName;
 
+	@Basic
+	@Column(name="LAST_NAME")
 	private String lastName;
 
+	@Basic
+	@Column(name="EMAIL_ADDRESS")
 	private String emailAddress;
 
+	@Basic
+	@Column(name="ADDRESS")
 	private String address;
 
-	private String city;
+	@ManyToOne
+	@JoinColumn(name = "CITY_ID")
+	private City city;
 
-	private String country;
-	
-	private String state;
+	@ManyToOne
+	@JoinColumn(name = "COUNTRY_ID")
+	private Country country;
 
+	@Basic
+	@Column(name="PIN")
 	private int pin;
-	
-	private PhoneNumber phoneNumber;
 
-	public PhoneNumber getPhoneNumber() {
-		return phoneNumber;
-	}
+	@Basic
+	@Column(name="PHONE_NUMBER")
+	private String phoneNumber;
 
-	public void setPhoneNumber(PhoneNumber phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
 
 	public String getAddress() {
 		return address;
@@ -39,44 +61,20 @@ public class UserProfile implements Serializable {
 		this.address = address;
 	}
 
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(Country country) {
 		this.country = country;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getEmailAddress() {
@@ -87,9 +85,38 @@ public class UserProfile implements Serializable {
 		this.emailAddress = emailAddress;
 	}
 
-	/*
-             * You can return an int!
-             */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public int getPin() {
 		return pin;
 	}
@@ -98,23 +125,16 @@ public class UserProfile implements Serializable {
 		this.pin = pin;
 	}
 
-	/* Returns a friendly representation of the UserProfile object */
-	public String toString() {
-		String result = " Mr " + getFirstName() + " "+ getLastName();
-		result += "\n resides at " + getAddress();
-		result += "\n in the city " + getCity();
-		result += "\n having Pin Code " + getPin();
-		result += "\n in the country " + getCountry();
-		return result;
+	public User getUser() {
+		return user;
 	}
 
-	private static final long serialVersionUID = 1L;
-
-	public String getState() {
-		return state;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public UserProfileTO asTO(){
+		return new UserProfileTO(getId(), getAddress(), getCity().asTO(), getCountry().asTO(),getEmailAddress(),getFirstName(),  getLastName(),
+				getPhoneNumber(), getPin());
 	}
 }
