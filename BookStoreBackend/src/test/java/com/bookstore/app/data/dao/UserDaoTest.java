@@ -79,5 +79,17 @@ public class UserDaoTest {
 
            assertNotNull(userDao.getAllUsers());
     }
+    
+    @Test
+    public void getAllCountriesTest() {
+
+           assertNotNull(userDao.getAllCountries());
+    }
+    
+    @Test
+    public void getAllCitiesByCountryTest() {
+
+           assertNotNull(userDao.getCitiesByCountryId(1L));
+    }
 
 }

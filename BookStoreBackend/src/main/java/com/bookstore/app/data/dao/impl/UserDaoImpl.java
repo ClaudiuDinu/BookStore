@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -178,4 +179,58 @@ public class UserDaoImpl implements IUserDao {
     public UserTO getUserById(int userId) {
         return null;
     }
+    
+    
+    public List<CountryTO> getAllCountries(){
+    	  Session session = getSessionFactory().openSession();
+
+          List<CountryTO> allCountries = new ArrayList<CountryTO>();
+
+          try {
+              session.beginTransaction();
+
+              Criteria criteria = session.createCriteria(Country.class);
+              List<Country> dbCountries = criteria.list();
+
+              for (Country dbC : dbCountries){
+                 allCountries.add(dbC.asTO());
+              }
+
+          }catch (Exception e){
+              //log the error
+              System.out.println(e);
+          }finally {
+              session.close();
+          }
+
+
+          return  allCountries;
+    }
+    
+    public List<CityTO> getCitiesByCountryId(Long countryId){
+    	
+  	  Session session = getSessionFactory().openSession();
+
+        List<CityTO> allCities = new ArrayList<CityTO>();
+
+        try {
+            session.beginTransaction();
+
+            Criteria criteria = session.createCriteria(City.class).add(Restrictions.eq("country", new Country(countryId, null)));
+            List<City> dbCities = criteria.list();
+
+            for (City dbC : dbCities){
+            	allCities.add(dbC.asTO());
+            }
+
+        }catch (Exception e){
+            //log the error
+            System.out.println(e);
+        }finally {
+            session.close();
+        }
+
+
+        return  allCities;
+  }
 }

@@ -1,6 +1,8 @@
 package com.bookstore.app.spring.controller;
 
 import com.bookstore.app.commons.bo.BookTO;
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
 import com.bookstore.app.commons.bo.UserTO;
 import com.bookstore.app.commons.exceptions.SavingObjectException;
 import com.bookstore.app.commons.exceptions.UserAuthenticationException;
@@ -91,6 +93,16 @@ public class RestServiceController  implements RestURIConstants{
     @RequestMapping(value = REST_BOOK_CATEGORY_ALL, method = RequestMethod.GET)
     public List<BookTO> getAllCategory(){
         return bookManager.getAllCategories();
+    }
+    
+    @RequestMapping(value = REST_COUNTRY_ALL, method = RequestMethod.GET)
+    public List<CountryTO> getAllCountries(){
+        return userManager.getAllCountries();
+    }
+    
+    @RequestMapping(value = REST_CITIES_BY_COUNTRY_ID, method = RequestMethod.GET)
+    public List<CityTO> getCitiesByCountryId(@PathVariable("countryId") Long countryId){
+        return userManager.getCitiesByCountryId(countryId);
     }
 
 

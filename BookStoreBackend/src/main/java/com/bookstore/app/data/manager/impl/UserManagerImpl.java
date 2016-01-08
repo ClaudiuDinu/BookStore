@@ -1,5 +1,7 @@
 package com.bookstore.app.data.manager.impl;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
 import com.bookstore.app.commons.bo.UserTO;
 import com.bookstore.app.commons.exceptions.SavingObjectException;
 import com.bookstore.app.commons.exceptions.UserAuthenticationException;
@@ -42,4 +44,13 @@ public class UserManagerImpl implements IUserManager {
     public UserTO saveUser(UserTO userTO) throws SavingObjectException{
         return userDao.saveUser(userTO);
     }
+
+	public List<CountryTO> getAllCountries() {
+		return userDao.getAllCountries();
+	}
+
+	public List<CityTO> getCitiesByCountryId(Long countryId) {
+		// TODO Auto-generated method stub
+		return userDao.getCitiesByCountryId(countryId);
+	}
 }

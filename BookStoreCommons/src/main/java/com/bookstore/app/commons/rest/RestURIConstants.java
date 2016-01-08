@@ -10,6 +10,8 @@ public interface RestURIConstants {
     public static final String REST_USER_LOGIN = "/rest/user/login";
     public static final String REST_USER_LOGIN2 = "/rest/user/login/{userName}/{password}";
     public static final String REST_USER_ADD = "/rest/user/add";
+    public static final String REST_COUNTRY_ALL = "/rest/country/all";
+    public static final String REST_CITIES_BY_COUNTRY_ID = "/rest/cities/{countryId}";
 
     public static final String REST_BOOK_ALL = "/rest/book/all";
     public static final String REST_BOOK_ADD = "/rest/book/add";

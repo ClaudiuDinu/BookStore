@@ -1,9 +1,11 @@
 package com.bookstore.app.commons.bo;
 
+import java.io.Serializable;
+
 /**
  * Created by cdinu on 12/14/2015.
  */
-public class CountryTO {
+public class CountryTO implements Serializable{
     private Long id;
 
     private String name;

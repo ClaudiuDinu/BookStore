@@ -14,7 +14,7 @@ public class BookTO implements Serializable {
 
     private String author;
 
-    private float price;
+    private Float price;
 
     private String publisher;
 
@@ -57,7 +57,7 @@ public class BookTO implements Serializable {
         this.id = id;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 

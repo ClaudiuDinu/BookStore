@@ -1,5 +1,7 @@
 package com.bookstore.app.data.dao;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
 import com.bookstore.app.commons.bo.UserTO;
 import com.bookstore.app.commons.exceptions.SavingObjectException;
 import com.bookstore.app.commons.exceptions.UserAuthenticationException;
@@ -19,4 +21,8 @@ public interface IUserDao {
     public List<UserTO> getAllUsers();
 
     public UserTO saveUser(UserTO userTO) throws SavingObjectException;
+    
+    public List<CountryTO> getAllCountries();
+    
+    public List<CityTO> getCitiesByCountryId(Long countryId);
 }
