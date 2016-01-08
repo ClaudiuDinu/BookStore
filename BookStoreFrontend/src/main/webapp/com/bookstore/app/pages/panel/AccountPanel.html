@@ -6,7 +6,31 @@
 </head>
 <body>
 <wicket:panel>
-    Welcome To Wicket Mr <span wicket:id="message">Message goes here</span>
+    <div class="container">
+             Welcome To Wicket Mr <span wicket:id="message">Message goes here</span>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="contact-section">
+
+                    <h3 class="section-title">Information</h3>
+
+                    <!-- Info - Icons List -->
+                    <ul class="icons-list">
+                        <li><i class="fa fa-user">  </i> <strong>Name:</strong> <span wicket:id="userFirstName"/> <span wicket:id="userLastName"/></li>
+                        <li><i class="fa fa-globe">  </i> <strong>Address:</strong> <span wicket:id="userAddress"/> ,<span wicket:id="userCity"/>, <span
+                                wicket:id="userCountry"/> </li>
+                        <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong> <span wicket:id="userEmailAddress"/></li>
+                        <li><i class="fa fa-mobile"></i> <strong>Phone:</strong> <span wicket:id="userPhoneNumber"/></li>
+                    </ul>
+
+                    <a wicket:id="changeUserInformation" class="btn btn-primary"> <i class="fa fa-pencil-square-o"></i> Change information</a>
+
+                </div>
+            </div>
+         </div>
+
+    </div>
 </wicket:panel>
 
 </body>

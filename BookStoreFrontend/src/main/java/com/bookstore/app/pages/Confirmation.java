@@ -3,6 +3,7 @@ package com.bookstore.app.pages;
 
 import com.bookstore.app.data.Cart;
 import com.bookstore.app.data.CheckoutBook;
+import com.bookstore.app.pages.layout.SecuredBookstoreTamplate;
 import com.bookstore.app.session.BookStoreSession;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -10,7 +11,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
-public class Confirmation extends SecuredBasePage {
+public class Confirmation extends SecuredBookstoreTamplate {
 	public Confirmation() {
 
 		add(new ListView<CheckoutBook>("booksBought", getCart().getCheckoutBooks()) {

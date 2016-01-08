@@ -26,28 +26,31 @@ public class BookDataProvider implements IDataProvider<BookData> {
 	public BookDataProvider() {
 		this(new BookCategoryTO(0,null));
 	}
-
-
-	public Iterator iterator(long first, long count) {
+	
+	
+	public Iterator<? extends BookData> iterator(int first, int count) {
 		return getBookServicesManager().getBooksForCategory(category.getId(), new Long(first).intValue(), new Long(count).intValue()).iterator();
+		
 	}
-
-	public long size() {
+	
+	public int size() {
 		return getBookServicesManager().getAllBooksForCategory(category.getId()).size();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public IModel<BookData> model(BookData object) {
 		return new LoadableBookModel(object);
 	}
 
 	public void detach() {
+		// TODO Auto-generated method stub
 	}
-
+	
 	// The BookServicesManager has to be looked up when required.
 	private BookServicesManager getBookServicesManager() {
 		return ((BookStoreApplication) Application.get()).getBookServicesManager();
 	}
-
+	
 	public BookCategoryTO getCategory() {
 		return category;
 	}
@@ -55,4 +58,5 @@ public class BookDataProvider implements IDataProvider<BookData> {
 	public void setCategoryId(BookCategoryTO category) {
 		this.category = category;
 	}
+
 }

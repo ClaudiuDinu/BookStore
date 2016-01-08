@@ -1,6 +1,5 @@
-package com.bookstore.app.pages;
+package com.bookstore.app.data;
 
-import com.bookstore.app.data.PhoneNumber;
 import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.convert.converter.AbstractConverter;

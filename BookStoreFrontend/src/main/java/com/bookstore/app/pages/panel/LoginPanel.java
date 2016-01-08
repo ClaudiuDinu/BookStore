@@ -1,12 +1,5 @@
 package com.bookstore.app.pages.panel;
 
-import com.bookstore.app.commons.bo.UserTO;
-import com.bookstore.app.manager.UserServicesManager;
-import com.bookstore.app.pages.Welcome;
-import com.bookstore.app.pages.user.CreateAccount;
-import com.bookstore.app.pages.user.CreateAccountPage;
-import com.bookstore.app.pages.user.LoginPage;
-import com.bookstore.app.session.BookStoreSession;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -15,6 +8,12 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
+
+import com.bookstore.app.commons.bo.UserTO;
+import com.bookstore.app.manager.UserServicesManager;
+import com.bookstore.app.pages.user.AccountPage;
+import com.bookstore.app.pages.user.CreateAccountPage;
+import com.bookstore.app.session.BookStoreSession;
 
 /**
  * Created by cdinu on 12/30/2015.
@@ -35,7 +34,8 @@ public class LoginPanel extends Panel {
     }
 
 
-    private void init(){
+    @SuppressWarnings({ "unchecked", "rawtypes", "serial" })
+	private void init(){
         userServicesManager = new UserServicesManager();
 
         TextField userIdField = new TextField("userId", new PropertyModel(this, "userId"));
@@ -56,7 +56,8 @@ public class LoginPanel extends Panel {
     }
 
     // Define your LoginForm and override onSubmit
-    private class LoginForm extends Form {
+    @SuppressWarnings("serial")
+	private class LoginForm extends Form {
         public LoginForm(String id) {
             super(id);
         }
@@ -74,9 +75,8 @@ public class LoginPanel extends Panel {
                 if (prevPage != null) {
                     setResponsePage(prevPage);
                 }else{
-                    Welcome welcomePage = new Welcome();
-                    welcomePage.setUserId(getUserId());
-                    setResponsePage(welcomePage);
+                    AccountPage accountPage = new AccountPage();
+                    setResponsePage(accountPage);
                 }
             } else {
                 String errMsg = getLocalizer().getString(

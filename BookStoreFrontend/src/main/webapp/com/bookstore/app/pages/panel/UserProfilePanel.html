@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <wicket:panel>
+
+        <section id="form"><!--form-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="login-form"><!--form-->
+                            <h2>Login to your account</h2>
+                            <div wicket:id="feedback"></div>
+                            <form wicket:id="userProfile">
+                               	<input type="text" wicket:id="firstName" placeholder="First Name"/><br/>
+                                <input type="text" wicket:id="lastName" placeholder="Last Name"/><br/>
+                                <input type="text" wicket:id="emailAddress" placeholder="E-mail"/><br/>
+                                <select wicket:id="countrySelected">
+                             	   <option></option>
+                            	</select>
+                               	<br/>
+                               	<br/>
+                                <select wicket:id="citySelected">
+                             	   <option></option>
+                               	</select>
+ 								<br/>
+                               	<br/>
+                                <input type="text" wicket:id="address" placeholder="Address"/><br/>
+                               	<input type="text" wicket:id="pin" placeholder="Pin"/><br/>
+                              	<input type="text" wicket:id="phoneNumber" placeholder="Phone"/><br/>
+                               
+                                <button type="submit" class="btn btn-default"  wicket:id="submitButton">Save</button>
+
+                            </form>
+                        </div><!--/form-->
+                    </div>
+                </div>
+            </div>
+        </section><!--/form-->
+    </wicket:panel>
+</body>
+</html>

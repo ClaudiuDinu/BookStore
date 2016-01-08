@@ -1,7 +1,10 @@
 package com.bookstore.app.manager;
 
+import com.bookstore.app.commons.bo.CityTO;
+import com.bookstore.app.commons.bo.CountryTO;
 import com.bookstore.app.commons.bo.UserTO;
 import com.bookstore.app.commons.rest.RestURIConstants;
+import com.bookstore.app.data.BookData;
 import com.bookstore.app.services.RestTemplateProvider;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -44,6 +47,11 @@ public class UserServicesManager extends RestTemplateProvider implements RestURI
 
         return postRestObject(REST_USER_ADD, userTO, UserTO.class);
     }
+    
+    public UserTO saveUser(UserTO userTO){
+
+        return postRestObject(REST_USER_ADD, userTO, UserTO.class);
+    }
 
     /**
      * create an URL for params that are send on GET. ex /login?userName=userName&password=password&....
@@ -71,4 +79,25 @@ public class UserServicesManager extends RestTemplateProvider implements RestURI
 
         return sb.toString();
     }
+    
+    
+    public List<CountryTO> getAllCountries() {
+
+    	CountryTO[] countryTOs = getRestObject(REST_COUNTRY_ALL, CountryTO[].class);
+
+        return new ArrayList<CountryTO>(Arrays.asList(countryTOs));
+    }
+
+    public List<CityTO> getCitiesByCountryId(long countryId) {
+    	
+    	  Map<String, Object> params = new HashMap<String, Object>();
+          params.put("countryId", countryId);
+
+          CityTO[] cities = getRestObjects(REST_CITIES_BY_COUNTRY_ID, CityTO[].class, params);
+
+          return new ArrayList<CityTO>(Arrays.asList(cities));
+    	
+    
+    }
+    
 }

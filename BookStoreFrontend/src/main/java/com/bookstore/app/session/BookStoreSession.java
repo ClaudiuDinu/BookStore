@@ -1,11 +1,14 @@
 package com.bookstore.app.session;
 
 
-import com.bookstore.app.commons.bo.UserTO;
-import com.bookstore.app.data.Cart;
-import org.apache.wicket.protocol.http.WebApplication;
+import java.util.Locale;
+
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
+
+import com.bookstore.app.application.BookStoreApplication;
+import com.bookstore.app.commons.bo.UserTO;
+import com.bookstore.app.data.Cart;
 
 
 public class BookStoreSession extends WebSession {
@@ -14,7 +17,14 @@ public class BookStoreSession extends WebSession {
     private UserTO user;
 
     public BookStoreSession(Request request) {
+    	
         super(request);
+        WebSession session = new WebSession(request);
+		Locale locale = session.getLocale();
+		if (!BookStoreApplication.LOCALES.contains(locale))
+		{
+			session.setLocale(Locale.ENGLISH);
+		}
 
     }
 

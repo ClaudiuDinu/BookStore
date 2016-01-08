@@ -18,7 +18,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <org.apache.wicket.version>7.0.0</org.apache.wicket.version>
+        <org.apache.wicket.version>1.5.14</org.apache.wicket.version>
         <org.slf4j.version>1.7.7</org.slf4j.version>
         <jetty9.version>9.2.14.v20151106</jetty9.version>
     </properties>
